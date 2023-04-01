@@ -46,7 +46,7 @@ import presetQuestions from '~~/utils/presetQuestions';
         margin: 0 auto;
         margin-top: 80px;
         padding: 5px;
-        width: 60%;
+        width: 65%;
         height: 400px;
         // background-color: gray;
         display: flex;
@@ -56,7 +56,7 @@ import presetQuestions from '~~/utils/presetQuestions';
         .main-item{
             position: relative;
             top: 30px;
-            width: 200px;
+            width: 250px;
             height: 80%;
             background-color: rgb(55, 55, 55);
             border-radius: 8px;

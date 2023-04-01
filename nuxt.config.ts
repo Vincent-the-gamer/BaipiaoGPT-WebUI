@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     app: {
         head: {
             title: "FreeChat",
-            viewport: "width-device-width，initial-scale=1",
+            viewport: "width=device-width,initial-scale=1",
             charset: "utf-8",
             meta: [
                 { name: "description", content: "白嫖ChatGPT" }

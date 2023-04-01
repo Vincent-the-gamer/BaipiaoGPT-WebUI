@@ -28,9 +28,9 @@
         position: absolute;
         margin: 0;
         height: 100%;
+        border-radius: 8px;
     }
     h1{
-        padding: 3px;
         position: relative;
         left: 65px;
         margin: 0;

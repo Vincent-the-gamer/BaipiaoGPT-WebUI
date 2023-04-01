@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: "http://{你自己的服务器ip}:{你的端口}"
+    baseURL: "http://{你的服务ip}:{你的端口号}"
 })

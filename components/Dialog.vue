@@ -12,6 +12,7 @@
 <script lang="ts" setup>
 import DialogItem from '~~/components/DialogItem.vue';
 import useChatStore from '~~/store/useChatStore';
+import "highlight.js/styles/tokyo-night-dark.css" // 引入代码高亮所需css
 
 /**
  * 读取聊天上下文的Store
@@ -28,7 +29,9 @@ const { chatContents } = chatStore
         top: 30px;
         margin: 0 auto;
         position: relative;
-        padding: 50px;
+        height: fit-content;
+        top: 60px;
+        padding-bottom: 400px;
         .item{
             margin-bottom: 25px;
             &:nth-child(2n){

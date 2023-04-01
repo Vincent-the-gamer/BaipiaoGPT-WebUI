@@ -1,5 +1,8 @@
 <template>
     <footer>
+        <p align="center">
+            <button @click="chatStore.regenerate">重新生成答案</button>
+        </p>
         <div class="input-area">
             <input type="text" 
                    placeholder="输入问题，拷打GPT！"
@@ -38,14 +41,28 @@ import useInputStore from '~~/store/useInputStore';
     position: fixed;
     left: 0;
     bottom: 0;
-    height: 50px;
+    height: fit-content;
     width: 100%;
-    background-color: rgb(44, 44, 44);
+    background-color: rgba(44, 44, 44, 0.5);
+    button{
+        position: relative;
+        height: 40px;
+        width: 100px;
+        border-radius: 5px;
+        border: 3px solid violet;
+        background-color: aqua;
+        transition: background-color, 0.3s;
+        &:hover{
+            border: 3px solid rgb(255, 0, 153);
+            background-color: pink;
+            cursor: pointer;
+        }
+    }
     .input-area{
         position: relative;
         padding: 7px;
         width: 60%;
-        height: 45px;
+        height: 100%;
         min-width: 600px;
         margin: 0 auto;
         input{
@@ -63,8 +80,7 @@ import useInputStore from '~~/store/useInputStore';
             }
         }
         button{
-            position: absolute;
-            bottom: 12px;
+            position: relative;
             margin-left: 5px;
             height: 40px;
             width: 100px;

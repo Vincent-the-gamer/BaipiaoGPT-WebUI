@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import ChatContent from "~~/interfaces/ChatContent";
 import myAxios from "~~/utils/axios";
 
+
 const useChatStore = defineStore("chatStore", {
     state: () => {
         return {
@@ -10,6 +11,38 @@ const useChatStore = defineStore("chatStore", {
         }
     },
     actions: {
+        /**
+         * 请求函数
+         */
+        requestAnswer(content: string){
+            myAxios.post("/",{ content }).then(
+                res => {
+                    const result: string = res.data
+                    this.chatContents[this.chatContents.length - 1].content = result
+                    this.scrollToLastMessage()
+                }
+            ).catch(err => {
+                this.chatContents[this.chatContents.length - 1].content = "发生错误了，请重新提问o(╥﹏╥)o"
+                this.scrollToLastMessage()
+            })    
+        },
+        /**
+         * 重新生成答案
+         */
+        regenerateAnswer(){
+            this.chatContents[this.chatContents.length - 1].content = "重新生成中..."
+            myAxios.get("/regenerate").then(
+                res => {
+                    const result: string = res.data
+                    this.chatContents[this.chatContents.length - 1].content = result
+                    this.scrollToLastMessage()
+                }
+            ).catch(err => {
+                this.chatContents[this.chatContents.length - 1].content = "发生错误了，请重新提问o(╥﹏╥)o"
+                this.scrollToLastMessage()
+            })
+        },
+
         /**
          * 和ai聊天，获取新上下文
          */
@@ -24,17 +57,7 @@ const useChatStore = defineStore("chatStore", {
                 content: "稍等哈，咱正在组织语言(*^▽^*)....."
             })
             // 直接和机器人聊天
-            myAxios.post("/",{ content: text }).then(
-                res => {
-                    const result: string = res.data
-                    this.chatContents[this.chatContents.length - 1].content = result
-                    this.scrollToLastMessage()
-                },
-                err => {
-                    this.chatContents[this.chatContents.length - 1].content = "发生错误了，请重新提问o(╥﹏╥)o"
-                    this.scrollToLastMessage()
-                }
-            )
+            this.requestAnswer(text)
         },
         /**
          * 清空对话
@@ -44,6 +67,18 @@ const useChatStore = defineStore("chatStore", {
             await myAxios.get("/clearContext")
             this.chatContents = []
         },
+
+        /**
+         * 重新生成答案
+         */
+        async regenerate(){
+            if(this.chatContents.length < 1){
+                alert("消息为空")
+            }
+            else{
+               this.regenerateAnswer()
+            }
+        }
     }
 })
 
