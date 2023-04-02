@@ -2,7 +2,7 @@
     <Header/>
     <MainMenu v-if="chatStore.chatContents.length < 1"/>
     <div v-else>
-        <button @click="() => chatStore.clearChat()">清空对话</button>
+        <button @click="clearChat">清空对话</button>
         <Dialog/>
     </div>
     <Footer/>
@@ -23,6 +23,14 @@
         document.documentElement.scrollTo(0, document.documentElement.clientHeight)
     }
  })
+
+ // 清空页面对话
+ function clearChat(){
+    if(chatStore.model === "gpt3.5"){
+        chatStore.clearChat()
+    }
+    else chatStore.clearScreen()
+ }
 
 </script>
 

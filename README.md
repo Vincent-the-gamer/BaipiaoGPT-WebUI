@@ -3,7 +3,8 @@
 后端仓库： [Bai-Piao-GPT-3.5-Turbo](https://github.com/Vincent-the-gamer/Bai-Piao-GPT-3.5-Turbo)
 
 ### 请注意
-本项目需配合后端项目使用，请去上述后端仓库链接拉取后端项目。
+1. 本项目需配合后端项目使用，请去上述后端仓库链接拉取后端项目。
+2. 前端已兼容不同的模型选择，根据是否有上下文来对页面功能进行动态调整。
 
 ## 拉取并运行项目
 
@@ -20,6 +21,16 @@ yarn install
 ~~~
 
 3. 运行项目
+
+修改`utils/axios.ts`里面的baseURL为你的后端地址
+~~~typescript
+/**
+ * 设置你可用的后端服务URL即可
+ */
+const baseURL = "http://{ip或域名}:{端口}"
+~~~
+
+然后把项目本地跑起来测试能不能和后端调通
 ~~~shell
 yarn run serve
 ~~~

@@ -1,7 +1,21 @@
 <template>
     <footer>
+        <div class="select-model" v-show="showChooseModel">
+            <p align="center">选择模型</p>
+            <select v-model="chatStore.model" 
+                    @change="(e: any) => chatStore.model = e.target.value">
+                <option value="gpt3.5" disabled>GPT-3.5-Turbo（目前寄掉了）</option>
+                <option value="legacy" selected>Legacy(更菜的模型，无上下文)</option>
+            </select>
+        </div>
+
         <p align="center">
-            <button @click="chatStore.regenerate">重新生成答案</button>
+            <button id="choose-model"
+                    @click="showChooseModel = !showChooseModel"
+                    >{{ showChooseModel ? "隐藏模型选择框" : "选择模型" }}</button>
+            <button @click="chatStore.regenerate"
+                    v-if="chatStore.model === 'gpt3.5'"
+                    >重新生成答案</button>
         </p>
         <div class="input-area">
             <input type="text" 
@@ -28,10 +42,18 @@ import useInputStore from '~~/store/useInputStore';
 
  // 发送消息按钮
  function sendMessage(){
-    chatStore.chat(inputStore.content)
-    // 清空输入框
-    inputStore.content = ""
+    if(inputStore.content === ""){
+        alert("消息不能为空！")
+    }
+    else{
+        chatStore.chat(inputStore.content)
+        // 清空输入框
+        inputStore.content = ""
+    }
  }
+
+ // 是否隐藏选择模型
+ const showChooseModel: Ref<boolean> = ref(false)
 
 
 </script>
@@ -44,6 +66,26 @@ import useInputStore from '~~/store/useInputStore';
     height: fit-content;
     width: 100%;
     background-color: rgba(44, 44, 44, 0.5);
+    .select-model{
+        position: fixed;
+        left: 10px;
+        bottom: 150px;
+        background-color: rgba(88, 88, 88, 0.248);
+        font-family: HanYiZhongHei;
+        width: fit-content;
+        margin: 0;
+        border-radius: 8px;
+        select{
+            height: 40px;
+            font-family: HanYiZhongHei;
+            margin: 0 auto;
+            background-color: rgb(48, 48, 48);
+            color: white;
+            border-radius: 8px;
+            border: 2px solid violet;
+        }
+    }
+
     button{
         position: relative;
         height: 40px;
@@ -57,13 +99,17 @@ import useInputStore from '~~/store/useInputStore';
             background-color: pink;
             cursor: pointer;
         }
+        &#choose-model{
+            margin-right: 8px;
+            width: fit-content;
+        }
     }
     .input-area{
         position: relative;
         padding: 7px;
         width: 60%;
         height: 100%;
-        min-width: 600px;
+        min-width: 630px;
         margin: 0 auto;
         input{
             padding: 6px;

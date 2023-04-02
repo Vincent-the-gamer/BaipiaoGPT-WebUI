@@ -15,6 +15,9 @@ export default defineNuxtConfig({
     // 设置全局SEO(head头部的相关内容)
     app: {
         head: {
+            htmlAttrs: {
+                lang: "zh-CN"
+            },
             title: "FreeChat",
             viewport: "width=device-width,initial-scale=1",
             charset: "utf-8",

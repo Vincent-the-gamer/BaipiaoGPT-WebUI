@@ -1,6 +1,6 @@
 <template>
    <main>
-     <h1>快来在线拷打GPT-3.5-Turbo!!!</h1>
+     <h1>快来在线拷打GPT !!!!</h1>
      <div class="main-item-container">
         <div class="main-item" v-for="tag of tagObj.tags" :key="tag.title">
             <h2>{{ tag.title }}</h2>
@@ -33,7 +33,7 @@ import presetQuestions from '~~/utils/presetQuestions';
     margin: 0 auto;
     top: 50px;
     height: fit-content;
-    width: 90%;
+    width: 80%;
     h1{
         position: relative;
         top: 30px;
@@ -46,7 +46,7 @@ import presetQuestions from '~~/utils/presetQuestions';
         margin: 0 auto;
         margin-top: 80px;
         padding: 5px;
-        width: 65%;
+        width: 100%;
         height: 400px;
         // background-color: gray;
         display: flex;
