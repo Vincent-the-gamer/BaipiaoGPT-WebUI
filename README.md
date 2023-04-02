@@ -2,6 +2,9 @@
 ## 使用 Nuxt 3 开发
 后端仓库： [Bai-Piao-GPT-3.5-Turbo](https://github.com/Vincent-the-gamer/Bai-Piao-GPT-3.5-Turbo)
 
+### 页面预览
+![前端](./.github/img/frontend.png)
+
 ### 请注意
 1. 本项目需配合后端项目使用，请去上述后端仓库链接拉取后端项目。
 2. 前端已兼容不同的模型选择，根据是否有上下文来对页面功能进行动态调整。
