@@ -7,7 +7,7 @@ const useChatStore = defineStore("chatStore", {
     state: () => {
         return {
              // 选择模型下拉框, 默认legacy模式
-            model: "legacy",  // 或"gpt3.5"
+            model: "gpt3.5",  // "legacy"或"gpt3.5"
             chatContents: [] as ChatContent[],
             scrollToLastMessage: () => {} // 在onMounted钩子中把操作函数传进来，不然document会是undefined
         }

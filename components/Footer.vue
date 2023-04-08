@@ -4,8 +4,8 @@
             <p align="center">选择模型</p>
             <select v-model="chatStore.model" 
                     @change="(e: any) => chatStore.model = e.target.value">
-                <option value="gpt3.5" disabled>GPT-3.5-Turbo（目前寄掉了）</option>
-                <option value="legacy" selected>Legacy(更菜的模型，无上下文)</option>
+                <option value="gpt3.5" selected>GPT-3.5-Turbo</option>
+                <option value="legacy" disabled>Legacy(更菜的模型，无上下文)</option>
             </select>
         </div>
 
