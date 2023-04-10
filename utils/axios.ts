@@ -6,7 +6,7 @@ import axios from "axios";
 
 // 有上下文的后端接口
 export const axiosWithContext = axios.create({
-    baseURL: "http://你的后端ip:端口"
+    baseURL: "http://你的服务器ip:接口"
 })
 
 // 没有上下文的后端接口

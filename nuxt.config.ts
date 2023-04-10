@@ -1,3 +1,5 @@
+import { buildAssetsDir } from "nuxt/dist/core/runtime/nitro/paths";
+
 // Nuxt配置
 export default defineNuxtConfig({
     // 关闭Are you interested in participating的提示
@@ -28,6 +30,12 @@ export default defineNuxtConfig({
                 { rel: 'icon', type: "image/x-icon", href: "/favicon.ico"}
             ],
         },
-        baseURL: "/"
+        baseURL: "/", // 部署时为GitHub仓库名，开发时为/
+        buildAssetsDir: "/nuxt/"  // 解决github pages部署的错误，将_nuxt重命名
     },
+    router: {
+        options: {
+            hashMode: true,
+        }
+    }
 })
