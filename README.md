@@ -5,12 +5,18 @@
 ### 页面预览
 ![前端](./.github/img/new-frontend.png)
 
-#### 已适配iPhone，懒得适配Galaxy Fold
+#### 已适配iPhone(偷懒版适配)，懒得适配Galaxy Fold
+
 懒得写media动态样式，直接硬缩就完事了
+
 Galaxy Fold的尺寸缩不进去（滑稽）
 
+![手机端](./.github/img/mobile.png)
+
 ### 请注意
+
 1. 本项目需配合后端项目使用，请去上述后端仓库链接拉取后端项目。
+
 2. 前端已兼容不同的模型选择，根据是否有上下文来对页面功能进行动态调整。
 
 ## 拉取并运行项目
