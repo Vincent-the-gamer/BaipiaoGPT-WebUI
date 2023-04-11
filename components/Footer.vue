@@ -154,7 +154,7 @@ import useInputStore from '~~/store/useInputStore';
         bottom: 3px;
         width: 70%;
         height: fit-content;
-        min-width: 400px;
+        min-width: 350px;
         margin: 0 auto;
         textarea{
             font-family: HanYiZhongHei;

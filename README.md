@@ -3,7 +3,11 @@
 后端仓库： [Bai-Piao-GPT-3.5-Turbo](https://github.com/Vincent-the-gamer/Bai-Piao-GPT-3.5-Turbo)
 
 ### 页面预览
-![前端](./.github/img/frontend.png)
+![前端](./.github/img/new-frontend.png)
+
+#### 已适配iPhone，懒得适配Galaxy Fold
+懒得写media动态样式，直接硬缩就完事了
+Galaxy Fold的尺寸缩不进去（滑稽）
 
 ### 请注意
 1. 本项目需配合后端项目使用，请去上述后端仓库链接拉取后端项目。
