@@ -17,18 +17,35 @@
                     v-if="chatStore.model === 'gpt3.5'"
                     >重新生成答案</button>
         </p>
-        <div class="input-area">
-            <input type="text" 
+        <div class="input-area" v-if="isWin">
+            <textarea type="text" 
+                   ref="textareaRef"
                    placeholder="输入问题，拷打GPT！"
                    v-model="inputStore.content"
-                   @keyup.enter="sendMessage"/>
-            <button @click="sendMessage">提问！！！</button>
+                   @keyup.ctrl.enter="sendMessage"/>
+            <button @click="sendMessage">提问(Ctrl + Enter)</button>
+        </div>
+        <div class="input-area" v-else-if="isMac">
+            <textarea type="text" 
+                   ref="textareaRef"
+                   placeholder="输入问题，拷打GPT！"
+                   v-model="inputStore.content"
+                   @keydown.meta.enter="sendMessage"/>
+            <button @click="sendMessage">提问(⌘ + Enter)</button>
+        </div>
+        <div class="input-area" v-else>
+            <textarea type="text" 
+                   ref="textareaRef"
+                   placeholder="输入问题，拷打GPT！"
+                   v-model="inputStore.content"/>
+            <button @click="sendMessage">提问</button>
         </div>
     </footer>
 </template>
 
 <script lang="ts" setup>
 
+import useCurrentPlatform from '~~/hooks/useCurrentPlatform';
 import useChatStore from '~~/store/useChatStore';
 import useInputStore from '~~/store/useInputStore';
 
@@ -38,6 +55,24 @@ import useInputStore from '~~/store/useInputStore';
 
  // 使用chatStore来进行消息发送
  const chatStore = useChatStore()
+
+ /**
+  * 文本框高度自适应
+  */
+ // 拿textarea 的 dom
+ const textareaRef: Ref<any> = ref(null)
+
+ const changeHeight = (e: any) => {
+    textareaRef.value.style.height = "50px"
+    textareaRef.value.style.height = e.target.scrollHeight + 'px';
+ }
+ onMounted(() => {
+    textareaRef.value.addEventListener("input", changeHeight)
+ })
+
+ onBeforeUnmount(() => {
+    textareaRef.value.removeEventListener("input", changeHeight)
+ })
 
 
  // 发送消息按钮
@@ -55,6 +90,12 @@ import useInputStore from '~~/store/useInputStore';
  // 是否隐藏选择模型
  const showChooseModel: Ref<boolean> = ref(false)
 
+ /**
+  * 判断当前系统环境
+  */
+ const currentPlatform = useCurrentPlatform()
+ const isWin: boolean = currentPlatform === "win32" || currentPlatform === "win64"
+ const isMac: boolean = currentPlatform === "mac"
 
 </script>
 
@@ -82,7 +123,7 @@ import useInputStore from '~~/store/useInputStore';
             background-color: rgb(48, 48, 48);
             color: white;
             border-radius: 8px;
-            border: 2px solid violet;
+            border: 2px solid rgb(255, 255, 255);
         }
     }
 
@@ -91,12 +132,14 @@ import useInputStore from '~~/store/useInputStore';
         height: 40px;
         width: 100px;
         border-radius: 5px;
-        border: 3px solid violet;
-        background-color: aqua;
+        color: white;
+        border: 3px solid rgb(168, 168, 168);
+        background-color: rgb(44, 44, 44);
         transition: background-color, 0.3s;
         &:hover{
-            border: 3px solid rgb(255, 0, 153);
-            background-color: pink;
+            border: 3px solid rgb(177, 177, 177);
+            background-color: rgb(255, 255, 255);
+            color: black;
             cursor: pointer;
         }
         &#choose-model{
@@ -106,33 +149,42 @@ import useInputStore from '~~/store/useInputStore';
     }
     .input-area{
         position: relative;
+        display: flex;
         padding: 7px;
-        width: 60%;
-        height: 100%;
-        min-width: 630px;
+        bottom: 3px;
+        width: 70%;
+        height: fit-content;
+        min-width: 400px;
         margin: 0 auto;
-        input{
-            padding: 6px;
+        textarea{
+            font-family: HanYiZhongHei;
+            padding: 10px;
             color: white;
             position: relative;
             bottom: 2px;
-            width: 80%;
-            height: 25px;
+            width: calc(85% - 25px);
+            max-height: 150px;
+            min-width: 150px;
+            min-height: 40px;
             border-radius: 7px;
-            background-color: rgb(124, 124, 124);
-            border: 3px solid greenyellow;
+            background-color: rgb(52, 52, 52);
+            border: 3px solid rgb(255, 255, 255);
+            resize: none;
             &::placeholder{
-                color: gold;
+                color: rgb(255, 246, 197);
             }
         }
         button{
             position: relative;
-            margin-left: 5px;
+            right: 0;
+            bottom: 1px;
+            left: 5px;
+            margin-top: 7%;
             height: 40px;
-            width: 100px;
+            width: fit-content;
             border-radius: 5px;
-            border: 3px solid violet;
-            background-color: aqua;
+            border: 3px solid rgb(255, 255, 255);
+            background-color: rgb(47, 47, 47);
             transition: background-color, 0.3s;
             &:hover{
                 border: 3px solid rgb(255, 0, 153);
