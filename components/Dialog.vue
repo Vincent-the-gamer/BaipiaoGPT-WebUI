@@ -1,6 +1,6 @@
 <template>
     <main>
-        <div class="dialog-area">
+        <div class="dialog-area" ref="dialogArea">
             <DialogItem class="item"
                         v-for="chat of chatContents" 
                         :role="chat.role" 
@@ -13,6 +13,7 @@
 import DialogItem from '~~/components/DialogItem.vue';
 import useChatStore from '~~/store/useChatStore';
 import "highlight.js/styles/tokyo-night-dark.css" // 引入代码高亮所需css
+import { useAutoAnimate } from '@formkit/auto-animate/vue'
 
 /**
  * 读取聊天上下文的Store
@@ -20,6 +21,7 @@ import "highlight.js/styles/tokyo-night-dark.css" // 引入代码高亮所需css
 const chatStore = useChatStore()
 const { chatContents } = chatStore
 
+const [dialogArea] = useAutoAnimate()
 
 </script>
 

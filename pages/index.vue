@@ -19,8 +19,16 @@
  const chatStore = useChatStore()
  // 把对滚动条的操作在组件挂载后传给store
  onMounted(() => {
+    let timer: any;
     chatStore.scrollToLastMessage = () => {
-        document.documentElement.scrollTo(0, document.documentElement.clientHeight)
+        // document.documentElement.scrollTo(0, document.documentElement.clientHeight)
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+            window.scrollTo({
+                top: document.body.clientHeight,
+                behavior: "smooth"
+            })
+        }, 300)
     }
  })
 
