@@ -21,11 +21,36 @@ import { useAutoAnimate } from '@formkit/auto-animate/vue'
 const chatStore = useChatStore()
 const { chatContents } = chatStore
 
-const [dialogArea] = useAutoAnimate()
+const [dialogArea] = useAutoAnimate({
+    duration: 300
+})
 
 </script>
 
 <style lang="scss" scoped>
+    // 呼吸灯特效
+    @keyframes breatheNeon1 {
+        0%{
+            filter: drop-shadow(0 0 30px black);
+        }
+        50%{
+            filter: drop-shadow(0 0 30px rgb(255, 20, 239));
+        }
+        100%{
+            filter: drop-shadow(0 0 30px black);
+        }
+    }
+    @keyframes breatheNeon2 {
+        0%{
+            filter: drop-shadow(0 0 30px black);
+        }
+        50%{
+            filter: drop-shadow(0 0 30px rgb(20, 255, 247));
+        }
+        100%{
+            filter: drop-shadow(0 0 30px black);
+        }
+    }
     .dialog-area{
         width: 90%;
         top: 30px;
@@ -34,13 +59,20 @@ const [dialogArea] = useAutoAnimate()
         height: fit-content;
         top: 60px;
         padding-bottom: 400px;
+        min-width: 300px;
         .item{
             margin-bottom: 25px;
             &:nth-child(2n){
                 background-color: rgb(47, 47, 47);
+                &:hover{
+                    animation: breatheNeon1 5s linear infinite;
+                }
             }
             &:nth-child(2n+1){
                 background-color: rgb(82, 82, 82);
+                &:hover{
+                    animation: breatheNeon2 5s linear infinite;
+                }
             }
         }
     }

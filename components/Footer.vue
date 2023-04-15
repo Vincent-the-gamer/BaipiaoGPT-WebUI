@@ -132,6 +132,7 @@ import useInputStore from '~~/store/useInputStore';
     height: fit-content;
     width: 100%;
     background-color: rgba(44, 44, 44, 0.5);
+    min-width: 300px;
 
     .select-model{
         position: fixed;

@@ -35,7 +35,7 @@ import useMarkdownIt from '~~/hooks/useMarkdownit';
 </script>
 
 <style lang="scss" scoped>
-
+  
     .dialog-item{
         filter: drop-shadow(0 0 20px black);
         border-radius: 8px;
@@ -47,7 +47,6 @@ import useMarkdownIt from '~~/hooks/useMarkdownit';
         transition: width, 0.5s;
         &:hover{
             transform: scale(102%, 102%);
-            filter: drop-shadow(0 0 20px deeppink);
         }
         .content-area{
             padding: 10px;

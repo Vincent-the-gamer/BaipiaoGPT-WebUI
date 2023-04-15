@@ -34,12 +34,25 @@ import presetQuestions from '~~/utils/presetQuestions';
     top: 50px;
     height: fit-content;
     width: 90%;
-    h1{
-        position: relative;
-        top: 30px;
-        width: fit-content;
-        margin: 0 auto;
-        font-size: 40px;
+    min-width: 300px;
+    @media (min-width: 450px){
+        h1{
+            position: relative;
+            top: 30px;
+            width: fit-content;
+            margin: 0 auto;
+            font-size: 40px;
+        }
+    }
+    @media (max-width: 450px){
+        h1{
+            position: relative;
+            text-align: center;
+            top: 30px;
+            width: fit-content;
+            margin: 0 auto;
+            font-size: 40px;
+        }
     }
     .main-item-container{
         position: relative;

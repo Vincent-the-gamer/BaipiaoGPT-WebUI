@@ -28,7 +28,7 @@
                 top: document.body.clientHeight,
                 behavior: "smooth"
             })
-        }, 300)
+        }, 500)
     }
  })
 
