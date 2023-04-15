@@ -7,5 +7,3 @@ node_modules
 .env
 dist
 .DS_Store
-# 排除部署到Git Pages的时候，不同baseURL的文件夹
-public/free-chat-deploy

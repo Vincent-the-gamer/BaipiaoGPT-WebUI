@@ -28,8 +28,8 @@ export default defineNuxtConfig({
                 { rel: 'icon', type: "image/x-icon", href: "/favicon.ico"}
             ],
         },
-        baseURL: "/", // 部署时为GitHub仓库名，开发时为/
-        buildAssetsDir: "/nuxt/"  // 解决github pages部署的错误，将_nuxt重命名
+        baseURL: "/free-chat-deploy/", // 部署时为GitHub仓库名，如果不部署到Pages类的地方，使用"/"就好
+        buildAssetsDir: "/nuxt/",  // 解决github pages部署的错误，将_nuxt重命名
     },
     router: {
         options: {

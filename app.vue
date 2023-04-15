@@ -5,12 +5,6 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-// 退出页面时清空上下文
-onBeforeUnmount( async () => {
-  await axiosWithContext.get("/clearContext")
-})
-</script>
 
 <style lang="scss">
   @font-face {

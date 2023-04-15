@@ -40,6 +40,12 @@
     else chatStore.clearScreen()
  }
 
+
+// 退出页面时清空上下文
+onBeforeUnmount( async () => {
+  await axiosWithContext.get("/clearContext")
+})
+
 </script>
 
 <style lang="scss" scoped>
