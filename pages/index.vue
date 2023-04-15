@@ -50,13 +50,13 @@ button{
     height: 40px;
     width: 100px;
     background-color: transparent;
-    border: 3px solid deepskyblue;
+    border: 3px solid rgb(255, 255, 255);
     border-radius: 7px;
     color: white;
     z-index: 2;
     transition: background-color, 0.5s;
     &:hover{
-        background-color: aquamarine;
+        background-color: rgb(255, 255, 255);
         color: black;
         cursor: pointer;
     }

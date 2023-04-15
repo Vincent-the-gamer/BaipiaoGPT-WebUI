@@ -17,46 +17,43 @@ const useChatStore = defineStore("chatStore", {
          * 上下文聊天(GPT-3.5-Turbo)请求函数
          */
         requestAnswer(content: string){
+            this.scrollToLastMessage()
             axiosWithContext.post("/",{ content }).then(
                 res => {
                     const result: string = res.data
                     this.chatContents[this.chatContents.length - 1].content = result
-                    this.scrollToLastMessage()
                 }
             ).catch(err => {
                 this.chatContents[this.chatContents.length - 1].content = "发生错误了，请重新提问o(╥﹏╥)o"
-                this.scrollToLastMessage()
             })    
         },
         /**
          * 无上下文聊(Legacy)请求函数
          */
         requestAnswerWithoutContext(content: string){
+            this.scrollToLastMessage()
             axiosWithoutContext.post("/",{ content }).then(
                 res => {
                     const result: string = res.data
                     this.chatContents[this.chatContents.length - 1].content = result
-                    this.scrollToLastMessage()
                 }
             ).catch(err => {
                 this.chatContents[this.chatContents.length - 1].content = "发生错误了，请重新提问o(╥﹏╥)o"
-                this.scrollToLastMessage()
             }) 
         },
         /**
          * 重新生成答案
          */
         regenerateAnswer(){
+            this.scrollToLastMessage()
             this.chatContents[this.chatContents.length - 1].content = "重新生成中..."
             axiosWithContext.get("/regenerate").then(
                 res => {
                     const result: string = res.data
                     this.chatContents[this.chatContents.length - 1].content = result
-                    this.scrollToLastMessage()
                 }
             ).catch(err => {
                 this.chatContents[this.chatContents.length - 1].content = "发生错误了，请重新提问o(╥﹏╥)o"
-                this.scrollToLastMessage()
             })
         },
 

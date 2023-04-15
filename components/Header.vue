@@ -47,7 +47,7 @@
         right: 10px;
         margin: 0;
         display: inline;
-        border: 3px solid aqua;
+        border: 3px solid rgb(255, 255, 255);
         border-radius: 7px;
         transition: color, 0.5s;
         img{
@@ -62,7 +62,7 @@
             display: inline;
         }
         &:hover{
-            background-color: aquamarine;
+            background-color: rgb(255, 255, 255);
             color: black;
             cursor: pointer;
         }

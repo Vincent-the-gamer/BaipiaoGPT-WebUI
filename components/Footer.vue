@@ -70,7 +70,7 @@ import useInputStore from '~~/store/useInputStore';
  const textareaRef: Ref<any> = ref(null)
 
  const changeHeight = (e: any) => {
-    textareaRef.value.style.height = "52px"
+    textareaRef.value.style.height = "53px"
     textareaRef.value.style.height = e.target.scrollHeight + 'px';
  }
  onMounted(() => {

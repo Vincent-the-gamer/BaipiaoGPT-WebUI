@@ -1,5 +1,3 @@
-import { buildAssetsDir } from "nuxt/dist/core/runtime/nitro/paths";
-
 // Nuxt配置
 export default defineNuxtConfig({
     // 关闭Are you interested in participating的提示
