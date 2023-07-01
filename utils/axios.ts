@@ -6,7 +6,7 @@ import axios, { AxiosInstance } from "axios";
 
 // 有上下文的后端接口
 export const axiosWithContext: AxiosInstance = axios.create({
-    baseURL: ""
+    baseURL: "http://localhost:8081"
 })
 
 // 没有上下文的后端接口

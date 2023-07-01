@@ -18,7 +18,7 @@ const useChatStore = defineStore("chatStore", {
          */
         requestAnswer(content: string){
             this.scrollToLastMessage()
-            axiosWithContext.post("/",{ content }).then(
+            axiosWithContext.post("/chat",{ content }).then(
                 res => {
                     const result: string = res.data
                     this.chatContents[this.chatContents.length - 1].content = result
@@ -32,7 +32,7 @@ const useChatStore = defineStore("chatStore", {
          */
         requestAnswerWithoutContext(content: string){
             this.scrollToLastMessage()
-            axiosWithoutContext.post("/",{ content }).then(
+            axiosWithoutContext.post("/chat",{ content }).then(
                 res => {
                     const result: string = res.data
                     this.chatContents[this.chatContents.length - 1].content = result

@@ -1,7 +1,7 @@
 <template>
   <header>
     <img src="~~/assets/img/ashley.png" alt="ashley" />
-    <h1>FreeChat</h1>
+    <h1>BaipiaoGPT</h1>
     <a class="right-button" href="https://github.com/Vincent-the-gamer/Bai-Piao-GPT-3.5-Turbo" target="_blank">
       <img src="~~/assets/img/github.png" alt="github" />
       <h2>GitHub</h2>
