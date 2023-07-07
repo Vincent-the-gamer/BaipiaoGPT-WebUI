@@ -53,8 +53,19 @@ npm run serve
 npm run generate
 ~~~
 
-如果构建服务端渲染文件，请去`nuxt.config.ts`中打开ssr选项：`ssr: false`改为`ssr: true`，然后运行
+如果构建一个服务：
 ~~~shell
 npm run build
 ~~~
-这样会构建出一个默认跑在3000端口的生产环境前端服务器，如果需要修改端口，请自行研究[Nuxt 3文档](https://nuxt.com.cn)配置。
+
+构建的服务默认跑在`3000`端口，我们使用`ecosystem.config.js`配合`pm2`模块进行部署，可以实现自定义端口
+
+使用时，需要将`ecosystem.config.js`和打包出来的`.output`文件夹放在同级，然后：
+
+~~~shell
+# 启动
+pm2 start ecosystem.config.js
+
+# 停止(切勿使用kill命令掐掉进程，pm2自带守护进程)
+pm2 stop ecosystem.config.js
+~~~
