@@ -1,17 +1,14 @@
 <template>
   <header>
     <img src="~~/assets/img/ashley.png" alt="ashley" />
-    <h1>BaipiaoGPT</h1>
-    <a class="right-button" href="https://github.com/Vincent-the-gamer/Bai-Piao-GPT-3.5-Turbo" target="_blank">
+    <h1>白嫖GPT</h1>
+    <a class="right-button" href="https://github.com/Vincent-the-gamer/Rust-BaipiaoGPT" target="_blank">
       <img src="~~/assets/img/github.png" alt="github" />
       <h2>GitHub</h2>
     </a>
   </header>
 </template>
 
-<script lang="ts" setup>
-
-</script>
 
 <style lang="scss" scoped>
 header{

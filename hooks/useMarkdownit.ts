@@ -3,6 +3,8 @@
  import hljs from "highlight.js"
 
 export default function useMarkdownIt(){
+    const style = `white-space: pre-wrap; position: relative;`
+
     const md = new MarkdownIt({
         html: true,
         linkify: true,
@@ -13,7 +15,7 @@ export default function useMarkdownIt(){
           if (lang && hljs.getLanguage(lang)) {
             try {
               return (
-                '<pre class="hljs"><code>' +
+                '<pre class="hljs" style='+ style +'><code>' +
                 hljs.highlight(lang, str, true).value +
                 "</code></pre>"
               )
@@ -21,7 +23,7 @@ export default function useMarkdownIt(){
           }
       
           return (
-            '<pre class="hljs"><code>' +
+            '<pre class="hljs" style="'+ style +'"><code>' +
             md.utils.escapeHtml(str) +
             "</code></pre>"
           )
