@@ -18,6 +18,7 @@
     "@formkit/auto-animate": "^0.7.0",
     "@pinia/nuxt": "^0.4.11",
     "axios": "^1.4.0",
+    "dayjs": "^1.11.9",
     "highlight.js": "^11.8.0",
     "markdown-it": "^13.0.1",
     "pinia": "^2.0.33"
