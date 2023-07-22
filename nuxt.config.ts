@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     app: {
         head: {
             htmlAttrs: {
-                lang: "zh-CN"
+                lang: "zh"
             },
             title: "白嫖GPT",
             viewport: "width=device-width,initial-scale=1",

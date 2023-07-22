@@ -10,7 +10,7 @@
                             props.content?.includes('稍等')
                           )
                           ">{{ props.content }}</h4>
-                <div v-else
+                <div v-else class="markdown-render"
                      v-html="md.render(props.content)"></div>
             </div>
         </div>
@@ -37,7 +37,6 @@ import useMarkdownIt from '~~/hooks/useMarkdownit';
 <style lang="scss" scoped>
   
     .dialog-item{
-        filter: drop-shadow(0 0 20px black);
         border-radius: 8px;
         position: relative;
         margin: 0 auto;
@@ -62,6 +61,11 @@ import useMarkdownIt from '~~/hooks/useMarkdownit';
                 left: 80px;
                 width: calc(100% - 85px);
                 white-space: pre-wrap;
+            }
+
+            .markdown-render{
+                position: relative;
+                overflow-x: scroll;
             }
         }
     }

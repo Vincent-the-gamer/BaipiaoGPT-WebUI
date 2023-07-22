@@ -7,6 +7,16 @@
 
 
 <style lang="scss">
+  ::view-transition-image-pair(root) {
+    isolation: auto;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+    display: block;
+  }
   @font-face {
     font-family: HanYiZhongHei;
     src: url("~~/assets/fonts/hanyizhonghei.ttf");
@@ -16,8 +26,6 @@
     src: url("~~/assets/fonts/DM-Mono.ttf");
   }
   body{
-    background-color: rgb(37, 37, 37);
-    color: white;
     font-family: HanYiZhongHei;
     pre{
         padding: 15px;

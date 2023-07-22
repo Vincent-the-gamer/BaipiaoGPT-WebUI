@@ -1,9 +1,10 @@
 <template>
     <div class="hide-button"
+        :class="themeStore.theme"
          @click="showFooter = !showFooter">
          <span>{{ showFooter ? "收起底部 <----" : "展开底部 ---->" }}</span>
     </div>
-    <footer> 
+    <footer :class="themeStore.theme"> 
         <div v-if="showFooter">
             <div class="select-model" v-show="showChooseModel">
                 <p align="center">选择模型</p>
@@ -50,6 +51,7 @@
 
 <script lang="ts" setup>
 
+import useThemeStore from '~~/store/useThemeStore';
 import useCurrentPlatform from '~~/hooks/useCurrentPlatform';
 import useChatStore from '~~/store/useChatStore';
 import useInputStore from '~~/store/useInputStore';
@@ -104,10 +106,31 @@ import useInputStore from '~~/store/useInputStore';
  const isWin: boolean = currentPlatform === "win32" || currentPlatform === "win64"
  const isMac: boolean = currentPlatform === "mac"
 
+ // 主题
+ const themeStore = useThemeStore()
+ 
+
 </script>
 
 <style lang="scss" scoped>
     .hide-button{
+        &.light{
+            border: 2px solid deeppink;
+            color: black;
+            &:hover{
+                background-color: gainsboro;
+                color: black;
+                cursor: pointer;
+            }
+        }
+        &.dark{
+            border: 2px solid white;
+            &:hover{
+                background-color: white;
+                color: black;
+                cursor: pointer;
+            }
+        }
         position: fixed;
         bottom: 150px;
         right: 5px;
@@ -126,12 +149,93 @@ import useInputStore from '~~/store/useInputStore';
     }
 
  footer{
+    &.dark{
+        background-color: rgba(44, 44, 44, 0.5);
+        .select-model{
+            background-color: rgba(88, 88, 88, 0.248);
+            select{
+                background-color: rgb(48, 48, 48);
+                color: white;
+                border: 2px solid rgb(255, 255, 255);
+            }
+        }
+        button{
+            color: white;
+            border: 3px solid rgb(168, 168, 168);
+            background-color: rgb(44, 44, 44);
+            &:hover{
+                border: 3px solid rgb(255, 0, 195);
+                background-color: rgb(255, 255, 255);
+                color: black;
+            }
+        }
+        .input-area{
+            textarea{
+                color: white;
+                background-color: rgb(52, 52, 52);
+                border: 3px solid rgb(255, 255, 255);
+                &::placeholder{
+                    color: rgb(255, 246, 197);
+                }
+            }
+            button{        
+                border: 3px solid rgb(255, 255, 255);
+                background-color: rgb(47, 47, 47);
+                &:hover{
+                    border: 3px solid rgb(255, 0, 153);
+                    background-color: rgb(255, 255, 255);
+                }
+            }
+        }
+    }
+    &.light{
+        background-color: rgba(145, 145, 145, 0.5);
+        .select-model{
+            background-color: rgba(145, 145, 145, 0.248);
+            border: 2px solid rgb(255, 140, 0);
+            select{
+                background-color: rgb(124, 124, 124);
+                color: white;
+                border: 2px solid rgb(0, 208, 255);
+            }
+        }
+        button{
+            color: black;
+            border: 3px solid rgb(168, 168, 168);
+            background-color: rgb(0, 238, 255);
+            &:hover{
+                border: 3px solid rgb(255, 0, 195);
+                background-color: rgb(255, 255, 255);
+                color: black;
+            }
+        }
+        .input-area{
+            textarea{
+                color: rgb(0, 0, 0);
+                background-color: rgb(206, 206, 206);
+                border: 3px solid rgb(252, 0, 0);
+                &::placeholder{
+                    color: rgb(69, 1, 78);
+                }
+            }
+            button{  
+                color: white;      
+                border: 3px solid rgb(255, 255, 255);
+                background-color: rgb(157, 0, 168);
+                &:hover{
+                    border: 3px solid rgb(255, 0, 153);
+                    background-color: rgb(255, 255, 255);
+                    color: black;
+                }
+            }
+        }
+    }
+
     position: fixed;
     left: 0;
     bottom: 0;
     height: fit-content;
     width: 100%;
-    background-color: rgba(44, 44, 44, 0.5);
     min-width: 300px;
 
     .select-model{

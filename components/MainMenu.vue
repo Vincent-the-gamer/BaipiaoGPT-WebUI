@@ -1,5 +1,5 @@
 <template>
-   <main>
+   <main :class="themeStore.theme">
      <h1>快来在线拷打GPT !!!!</h1>
      <div class="main-item-container">
         <div class="main-item" v-for="tag of tagObj.tags" :key="tag.title">
@@ -13,22 +13,74 @@
 </template>
 
 <script lang="ts" setup>
+import useThemeStore from '~~/store/useThemeStore';
 import { reactive } from 'vue';
 import useInputStore from '~~/store/useInputStore';
 import presetQuestions from '~~/utils/presetQuestions';
 
-    // 导入预设问题
-    const tagObj: any = reactive(presetQuestions)
+// 导入预设问题
+const tagObj: any = reactive(presetQuestions)
 
-    // 使用store来同步输入框内容
-    const inputStore = useInputStore()
-    function setInputContent(text: string){
-        inputStore.setContent(text)
-    }
+// 使用store来同步输入框内容
+const inputStore = useInputStore()
+function setInputContent(text: string){
+    inputStore.setContent(text)
+}
+
+// 主题
+const themeStore = useThemeStore()
+
+
 </script>
 
 <style lang="scss" scoped>
   main{
+    &.dark{
+        .main-item-container{
+            .main-item{
+                background-color: rgb(55, 55, 55);
+                color: white;
+                filter: drop-shadow(0 0 20px black);
+                &:hover{
+                    filter: drop-shadow(0 0 20px deeppink);
+                }
+                h2{
+                    text-align: center;
+                }
+                button{                  
+                    background-color: rgb(76, 75, 75);
+                    border: 3px solid deepskyblue;     
+                    color: white;
+                    &:hover{
+                        background-color: blue;
+                    }
+                }
+            }
+        }
+    }
+    &.light{
+        .main-item-container{
+            .main-item{
+                background-color: white;
+                color: black;
+                filter: drop-shadow(0 0 20px black);
+                &:hover{
+                    filter: drop-shadow(0 0 20px rgb(220, 20, 255));
+                }
+                h2{
+                    text-align: center;
+                }
+                button{                  
+                    background-color: rgb(227, 227, 227);
+                    border: 3px solid rgb(255, 0, 255);     
+                    color: black;
+                    &:hover{
+                        background-color: rgb(255, 0, 0);
+                    }
+                }
+            }
+        }
+    }
     position: relative;
     margin: 0 auto;
     top: 50px;
@@ -70,30 +122,20 @@ import presetQuestions from '~~/utils/presetQuestions';
             top: 30px;
             width: 250px;
             height: 83%;
-            background-color: rgb(55, 55, 55);
             border-radius: 8px;
-            filter: drop-shadow(0 0 20px black);
             margin: 8px;
             transition: filter, 0.3s;
-            &:hover{
-                filter: drop-shadow(0 0 20px deeppink);
-            }
             h2{
                 text-align: center;
             }
             button{
                 padding: 3px;             
-                background-color: rgb(76, 75, 75);
                 margin: 0 auto;
-                border: 3px solid deepskyblue;
                 border-radius: 8px;
                 position: relative;
-                color: white;
                 transition: width, 0.5s;
                 height: fit-content;
-
                 &:hover{
-                    background-color: blue;
                     cursor: pointer;
                     transform: scale(105%, 105%);
                 }
